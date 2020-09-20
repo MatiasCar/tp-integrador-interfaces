@@ -1,10 +1,15 @@
 package org.Ventanas
 
+import org.AppModel.AuthorAppModel
 import org.AppModel.LoginAppModel
+import org.ui.Author
+import org.ui.NotFound
 import org.uqbar.arena.kotlin.extensions.*
 import org.uqbar.arena.widgets.*
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
+import org.uqbar.commons.model.exceptions.UserException
+import org.uqbar.lacar.ui.model.Action
 
 
 class LoginWindow (owner: WindowOwner, loginAppModel: LoginAppModel): SimpleWindow<LoginAppModel>(owner,loginAppModel) {
@@ -36,7 +41,14 @@ class LoginWindow (owner: WindowOwner, loginAppModel: LoginAppModel): SimpleWind
 
         Button(mainPanel) with {
             caption = "Login"
+            onClick(Action { try{
+                var author : Author = modelObject.system.login( modelObject.email, modelObject.contraseña)
+                MainWindows(owner, AuthorAppModel(author)).open()
 
+            }
+            catch (e : NotFound){
+                throw UserException(e.message)
+            }})
         }
     }
 
