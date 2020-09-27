@@ -43,7 +43,8 @@ class LoginWindow (owner: WindowOwner, loginAppModel: LoginAppModel): SimpleWind
             caption = "Login"
             onClick(Action { try{
                 var author : Author = modelObject.system.login( modelObject.email, modelObject.contraseña)
-                MainWindows(owner, AuthorAppModel(author)).open()
+                thisWindow.close()
+                MainWindows(owner, AuthorAppModel(author, modelObject.system)).open()
 
             }
             catch (e : NotFound){
