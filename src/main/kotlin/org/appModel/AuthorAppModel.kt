@@ -1,5 +1,6 @@
-package org.AppModel
+package org.appModel
 
+import org.exceptions.NoSelectedException
 import org.ui.Author
 import org.ui.MediumSystem
 import org.ui.Note
@@ -24,11 +25,25 @@ class AuthorAppModel(author : Author, var system : MediumSystem) {
         email = author.email
         contraseña = author.password
         foto = author.photo
-        notasDelModelo = system.searchNotesByAuthorId(id)
-        notas = notasDelModelo.map { NotasAppModel(it) }.toMutableList()
+        notas = initNotas()
+        //notasDelModelo = initNotas()
+        //notas = notasDelModelo.map { NotasAppModel(it) }.toMutableList()
     }
 
 
 
+    fun comprobarSeleccion(){
+        if(notaSeleccionada ==null){
+            throw NoSelectedException("No se ha seleccionado ninguna nota")
+        }
+    }
 
+    fun deleteNote(){
+        notaSeleccionada?.id?.let { system.removeNote(it) }
+        notas = initNotas()
+    }
+
+    fun initNotas() : MutableList<NotasAppModel>{
+      return system.searchNotesByAuthorId(id).map { NotasAppModel(it) }.toMutableList()
+    }
 }

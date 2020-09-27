@@ -1,7 +1,7 @@
-package org.Ventanas
+package org.ventanas
 
-import org.AppModel.AuthorAppModel
-import org.AppModel.LoginAppModel
+import org.appModel.AuthorAppModel
+import org.appModel.LoginAppModel
 import org.ui.Author
 import org.ui.NotFound
 import org.uqbar.arena.kotlin.extensions.*

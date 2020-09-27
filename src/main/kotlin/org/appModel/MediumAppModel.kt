@@ -1,4 +1,4 @@
-package org.AppModel
+package org.appModel
 
 import org.ui.bootstrap.getMediumSystem
 

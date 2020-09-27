@@ -1,10 +1,9 @@
-package org.AppModel
+package org.appModel
 
 import org.ui.Author
 import org.ui.Comment
 import org.ui.Note
 import org.uqbar.commons.model.annotations.Observable
-import sun.security.ec.point.ProjectivePoint
 
 @Observable
 class NotasAppModel (nota : Note) {

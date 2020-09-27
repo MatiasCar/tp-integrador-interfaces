@@ -1,9 +1,9 @@
 package org
 
 
-import org.AppModel.LoginAppModel
-import org.AppModel.MediumAppModel
-import org.Ventanas.LoginWindow
+import org.appModel.LoginAppModel
+import org.appModel.MediumAppModel
+import org.ventanas.LoginWindow
 import org.uqbar.arena.Application;
 import org.uqbar.arena.windows.Window
 
