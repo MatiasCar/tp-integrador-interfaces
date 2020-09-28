@@ -9,7 +9,7 @@ import org.uqbar.arena.windows.Window
 
 class MediumAplication() : Application(){
     override fun createMainWindow(): Window<*> {
-        return LoginWindow(this, LoginAppModel(MediumAppModel()))
+        return LoginWindow(this, LoginAppModel(MediumAppModel()), MediumAppModel())
     }
 
 }

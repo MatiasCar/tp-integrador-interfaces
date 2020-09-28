@@ -3,18 +3,17 @@ package org.appModel
 import org.exceptions.NoSelectedException
 import org.ui.Author
 import org.ui.MediumSystem
-import org.ui.Note
 import org.uqbar.commons.model.annotations.Observable
 
 @Observable
-class AuthorAppModel(author : Author, var system : MediumSystem) {
+class AuthorAppModel(author : Author, var system : MediumAppModel) {
 
     var id : String = ""
     var name : String = ""
     var email : String = ""
     var contraseña : String = ""
     var foto : String = ""
-    var notasDelModelo : List<Note> = mutableListOf() //notas que vienen del modelo
+    //var notasDelModelo : List<Note> = mutableListOf() //notas que vienen del modelo
     var notas : MutableList<NotasAppModel> = mutableListOf() //notas mapeadas a AppModel
     var notaSeleccionada : NotasAppModel? = null
 
@@ -26,8 +25,7 @@ class AuthorAppModel(author : Author, var system : MediumSystem) {
         contraseña = author.password
         foto = author.photo
         notas = initNotas()
-        //notasDelModelo = initNotas()
-        //notas = notasDelModelo.map { NotasAppModel(it) }.toMutableList()
+
     }
 
 
@@ -45,5 +43,9 @@ class AuthorAppModel(author : Author, var system : MediumSystem) {
 
     fun initNotas() : MutableList<NotasAppModel>{
       return system.searchNotesByAuthorId(id).map { NotasAppModel(it) }.toMutableList()
+    }
+
+    fun recargarNotas(){
+        notas = initNotas()
     }
 }

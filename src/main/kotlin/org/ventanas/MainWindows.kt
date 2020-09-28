@@ -1,6 +1,7 @@
 package org.ventanas
 
 import org.appModel.AuthorAppModel
+import org.appModel.MediumAppModel
 import org.appModel.NotasAppModel
 import org.exceptions.NoSelectedException
 import org.uqbar.arena.kotlin.extensions.*
@@ -12,10 +13,10 @@ import org.uqbar.commons.model.exceptions.UserException
 import org.uqbar.lacar.ui.model.Action
 
 
-class MainWindows(owner : WindowOwner, author : AuthorAppModel) : SimpleWindow<AuthorAppModel>(owner, author){
+class MainWindows(owner : WindowOwner, author : AuthorAppModel,var system : MediumAppModel) : SimpleWindow<AuthorAppModel>(owner, author){
     override fun addActions(p0: Panel?) {
 
-        Button(p0) with { caption = "Add new Note"; onClick(Action {  }) }
+        Button(p0) with { caption = "Add new Note"; onClick(Action { AddNoteWindows(thisWindow, NotasAppModel( null),system,modelObject).open() }) }
 
         Button(p0) with { caption = "Edit Note"; onClick(Action {
             try {

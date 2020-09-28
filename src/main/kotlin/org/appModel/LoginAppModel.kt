@@ -5,7 +5,7 @@ import org.ui.MediumSystem
 import org.uqbar.commons.model.annotations.Observable
 
 @Observable
-class LoginAppModel(val medium : MediumAppModel){
+class LoginAppModel(medium : MediumAppModel){
 
     var system : MediumSystem = medium.mediumSystem
     var email : String = ""

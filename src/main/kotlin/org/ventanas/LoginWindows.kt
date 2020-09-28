@@ -2,6 +2,8 @@ package org.ventanas
 
 import org.appModel.AuthorAppModel
 import org.appModel.LoginAppModel
+import org.appModel.MediumAppModel
+import org.appModel.NotasAppModel
 import org.ui.Author
 import org.ui.NotFound
 import org.uqbar.arena.kotlin.extensions.*
@@ -12,7 +14,7 @@ import org.uqbar.commons.model.exceptions.UserException
 import org.uqbar.lacar.ui.model.Action
 
 
-class LoginWindow (owner: WindowOwner, loginAppModel: LoginAppModel): SimpleWindow<LoginAppModel>(owner,loginAppModel) {
+class LoginWindow (owner: WindowOwner, loginAppModel: LoginAppModel, var system : MediumAppModel): SimpleWindow<LoginAppModel>(owner,loginAppModel) {
     override fun addActions(mainPanel: Panel) {
 
     }
@@ -44,7 +46,7 @@ class LoginWindow (owner: WindowOwner, loginAppModel: LoginAppModel): SimpleWind
             onClick(Action { try{
                 var author : Author = modelObject.system.login( modelObject.email, modelObject.contraseña)
                 thisWindow.close()
-                MainWindows(owner, AuthorAppModel(author, modelObject.system)).open()
+                MainWindows(owner, AuthorAppModel(author, system) ,system).open()
 
             }
             catch (e : NotFound){
