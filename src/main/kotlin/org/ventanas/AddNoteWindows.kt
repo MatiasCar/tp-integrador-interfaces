@@ -22,6 +22,7 @@ class AddNoteWindows(owner: WindowOwner, notasAppModel: NotasAppModel, system : 
 
                 try {
                     system.comprobarExistenciaDeTitulo(modelObject.title)
+                    modelObject.comprobarTituloVacio(modelObject.title)
                     system.mediumSystem.addNote( authorAppModel.id, modelObject.crearDraftNote())
                     authorAppModel.recargarNotas()
                     close()

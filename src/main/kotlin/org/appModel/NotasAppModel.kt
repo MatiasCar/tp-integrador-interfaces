@@ -1,5 +1,6 @@
 package org.appModel
 
+import org.exceptions.EmptyFieldException
 import org.ui.Author
 import org.ui.Comment
 import org.ui.DraftNote
@@ -36,6 +37,12 @@ class NotasAppModel(nota: Note?) {
 
     fun crearDraftNote() : DraftNote{
         return DraftNote(title, body, categories)
+    }
+
+    fun comprobarTituloVacio(titulo: String) {
+        if(titulo == ""){
+            throw EmptyFieldException("No se ha escrito ningun titulo")
+        }
     }
 }
 

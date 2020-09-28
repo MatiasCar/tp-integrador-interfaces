@@ -34,4 +34,6 @@ class MediumAppModel () {
     fun searchNotesByAuthorId(author : String) : List<Note>{
      return mediumSystem.searchNotesByAuthorId(author)
     }
+
+
 }

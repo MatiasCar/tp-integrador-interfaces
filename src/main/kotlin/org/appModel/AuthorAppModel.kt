@@ -48,4 +48,7 @@ class AuthorAppModel(author : Author, var system : MediumAppModel) {
     fun recargarNotas(){
         notas = initNotas()
     }
+
+
+
 }
