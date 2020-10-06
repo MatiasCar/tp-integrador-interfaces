@@ -1,6 +1,6 @@
 package org.appModel
 
-import org.exceptions.AlreadyExistException
+import org.exceptions.TitleAlreadyExistException
 import org.ui.Note
 import org.ui.bootstrap.getMediumSystem
 
@@ -19,13 +19,10 @@ class MediumAppModel () {
             rta = rta or (nota.title == titulo)
         }
         if(rta){
-            throw AlreadyExistException("Ya existe una nota llamada $titulo")
+            throw TitleAlreadyExistException("Ya existe una nota llamada $titulo")
         }
     }
 
-    fun recargarNotas(){
-        notas = mediumSystem.notes
-    }
 
     fun removeNote(note : String){
         mediumSystem.removeNote(note)

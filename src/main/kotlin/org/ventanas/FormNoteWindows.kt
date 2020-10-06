@@ -2,7 +2,7 @@ package org.ventanas
 
 import org.appModel.AuthorAppModel
 import org.appModel.MediumAppModel
-import org.appModel.NotasAppModel
+import org.appModel.NotaAppModel
 import org.uqbar.arena.kotlin.extensions.bindTo
 import org.uqbar.arena.kotlin.extensions.text
 import org.uqbar.arena.kotlin.extensions.width
@@ -13,7 +13,7 @@ import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
-abstract class FormNoteWindows(owner: WindowOwner, notasAppModel: NotasAppModel, var system: MediumAppModel, var authorAppModel: AuthorAppModel) : SimpleWindow<NotasAppModel>(owner, notasAppModel) {
+abstract class FormNoteWindows(owner: WindowOwner, notaAppModel: NotaAppModel, var system: MediumAppModel, var authorAppModel: AuthorAppModel) : SimpleWindow<NotaAppModel>(owner, notaAppModel) {
 
 
     override fun createFormPanel(p0: Panel?) {

@@ -3,7 +3,6 @@ package org.ventanas
 import org.appModel.AuthorAppModel
 import org.appModel.LoginAppModel
 import org.appModel.MediumAppModel
-import org.appModel.NotasAppModel
 import org.ui.Author
 import org.ui.NotFound
 import org.uqbar.arena.kotlin.extensions.*
