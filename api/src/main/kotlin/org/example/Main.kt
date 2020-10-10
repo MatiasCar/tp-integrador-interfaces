@@ -4,12 +4,19 @@ import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.path
 import io.javalin.core.security.Role
 import io.javalin.core.util.RouteOverviewPlugin
+import org.example.model.Medium
 
 enum class Roles : Role {
     ANYONE, USER
 }
 
 fun main(args: Array<String>) {
+
+    val medium = Medium()
+    val jwtToken = MediumTokenJWT()
+
+
+
     val app = Javalin.create{
         it.defaultContentType = "applicatoin/json"
         it.registerPlugin(RouteOverviewPlugin("/routes"))
@@ -23,7 +30,7 @@ fun main(args: Array<String>) {
 
     app.routes {
         path("register"){
-            //post
+
         }
         path("login"){
 
