@@ -2,7 +2,12 @@ package org.example
 
 import io.javalin.Javalin
 import io.javalin.apibuilder.ApiBuilder.path
+import io.javalin.core.security.Role
 import io.javalin.core.util.RouteOverviewPlugin
+
+enum class Roles : Role {
+    ANYONE, USER
+}
 
 fun main(args: Array<String>) {
     val app = Javalin.create{
