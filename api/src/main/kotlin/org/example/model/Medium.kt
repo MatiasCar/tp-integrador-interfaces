@@ -9,7 +9,7 @@ import org.ui.bootstrap.getMediumSystem
 
 
 class Medium {
-    private val system = getMediumSystem()
+    var system = getMediumSystem()
 
 
 

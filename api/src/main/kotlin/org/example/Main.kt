@@ -14,12 +14,15 @@ fun main(args: Array<String>) {
 
     val medium = Medium()
     val jwtToken = MediumTokenJWT()
+    val jwtAccessManager = MediumAccessManager(jwtToken, medium)
 
-
+    medium.register("jorge", "jorge@gmail.com","1234","foto.jpg")
 
     val app = Javalin.create{
         it.defaultContentType = "applicatoin/json"
         it.registerPlugin(RouteOverviewPlugin("/routes"))
+        it.enableCorsForAllOrigins()
+        it.accessManager(jwtAccessManager)
     }
 
     app.before {

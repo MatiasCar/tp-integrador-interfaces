@@ -19,7 +19,7 @@ class userGenerator : JWTGenerator<Author> {
 
 class MediumTokenJWT {
 
-    val algorithm = Algorithm.HMAC256("Maybe.I.Can.Approve.This")
+    val algorithm = Algorithm.HMAC256("Maybe.I.Can.Approve.This?")
     val generator = userGenerator()
     val verifer = JWT.require(algorithm).build()
     val provider = JWTProvider(algorithm,generator,verifer)
