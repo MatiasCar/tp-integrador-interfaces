@@ -4,6 +4,7 @@ import org.example.MediumTokenJWT
 import org.ui.MediumSystem
 import io.javalin.http.Context
 import org.example.exceptions.UserNameExistException
+import org.example.exceptions.UserNotFoundException
 
 class UserController (val system : MediumSystem , val mediumToken : MediumTokenJWT) {
 
@@ -31,6 +32,31 @@ class UserController (val system : MediumSystem , val mediumToken : MediumTokenJ
             )
         }
 
+    }
+
+
+    fun login(ctx : Context){
+        val login = ctx.bodyValidator<UserLoginMapper>().check(
+                {it.email != null && it.password != null}, "Invalid body"
+        ).get()
+
+        try {
+            val usuario = system.login(login.email!!, login.password!!)
+            ctx.header("Authorization",mediumToken.generateToken(usuario))
+            ctx.status(200)
+            ctx.json(
+                    mapOf("result" to "ok")
+            )
+        }
+        catch (e : UserNotFoundException){
+            ctx.status(400)
+            ctx.json(
+                    mapOf(
+                            "result" to "error",
+                            "message" to e.message.toString()
+                    )
+            )
+        }
     }
 
 }

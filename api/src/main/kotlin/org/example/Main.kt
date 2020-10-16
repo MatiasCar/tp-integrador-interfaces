@@ -38,7 +38,7 @@ fun main(args: Array<String>) {
             post(userController::createUser, mutableSetOf<Role>(Roles.ANYONE))
         }
         path("login"){
-
+            post(userController::login, mutableSetOf<Role>(Roles.ANYONE))
         }
         path("user"){
 
