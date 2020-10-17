@@ -4,10 +4,13 @@ import org.example.MediumTokenJWT
 import org.ui.MediumSystem
 import io.javalin.http.Context
 import org.ui.NotFound
+import org.ui.Note
 import org.ui.UsedEmail
+import org.ui.bootstrap.getMediumSystem
 
-class UserController (val system : MediumSystem , val mediumToken : MediumTokenJWT) {
+class UserController (val mediumToken : MediumTokenJWT) {
 
+    val mediumSystem : MediumSystem = getMediumSystem()
 
     fun createUser(ctx : Context){
         try {
@@ -17,7 +20,7 @@ class UserController (val system : MediumSystem , val mediumToken : MediumTokenJ
                 }, "Invalid body : name, email, password or photo"
                 )
                 .get()
-            val author = system.registerAuthor(nuevoUsuario.name!!, nuevoUsuario.email!!, nuevoUsuario.password!!, nuevoUsuario.photo!!)
+            val author = mediumSystem.registerAuthor(nuevoUsuario.name!!, nuevoUsuario.email!!, nuevoUsuario.password!!, nuevoUsuario.photo!!)
             ctx.header("Authorization", mediumToken.generateToken(author))
             ctx.status(201)
             ctx.json(mapOf("result" to "ok"))
@@ -41,7 +44,7 @@ class UserController (val system : MediumSystem , val mediumToken : MediumTokenJ
         ).get()
 
         try {
-            val usuario = system.login(login.email!!, login.password!!)
+            val usuario = mediumSystem.login(login.email!!, login.password!!)
             ctx.header("Authorization",mediumToken.generateToken(usuario))
             ctx.status(200)
             ctx.json(
@@ -63,11 +66,21 @@ class UserController (val system : MediumSystem , val mediumToken : MediumTokenJ
     fun getUser(ctx : Context){
         val token = ctx.header("Authorization")
         val id = mediumToken.validate(token!!)
-        val usuario = system.getAuthor(id)
+        val usuario = mediumSystem.getAuthor(id)
         ctx.status(201)
         ctx.json(
             UserInfoMapper(usuario.name, usuario.email, usuario.photo)
         )
     }
 
+
+    fun getNotes(ctx : Context){
+        val token = ctx.header("Authorization")
+        val id = mediumToken.validate(token!!)
+        val note = mediumSystem.notes.filter { it.author == mediumSystem.getAuthor(id) }
+        ctx.status(201)
+        ctx.json(
+               note.map { NoteInfo(it.title, it.body, it.categories.toString(), it.author.name) }
+        )
+    }
 }

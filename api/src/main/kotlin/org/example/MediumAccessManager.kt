@@ -6,11 +6,11 @@ import io.javalin.http.Context
 import io.javalin.http.Handler
 import io.javalin.http.UnauthorizedResponse
 
-import org.example.model.Medium
 import org.ui.Author
+import org.ui.MediumSystem
 import org.ui.NotFound
 
-class MediumAccessManager(val tokenJWT: MediumTokenJWT, val medium: Medium): AccessManager{
+class MediumAccessManager(val tokenJWT: MediumTokenJWT, val medium: MediumSystem): AccessManager{
     override fun manage(handler: Handler, ctx : Context, roles : MutableSet<Role>) {
         val token = ctx.header("Authorization")
         when{
@@ -27,7 +27,7 @@ class MediumAccessManager(val tokenJWT: MediumTokenJWT, val medium: Medium): Acc
     fun getUser(token : String) : Author{
         try{
             val userId = tokenJWT.validate(token)
-            return medium.system.getAuthor(userId)
+            return medium.getAuthor(userId)
         }
         catch (e : NotFound){
             throw UnauthorizedResponse("Token not found")

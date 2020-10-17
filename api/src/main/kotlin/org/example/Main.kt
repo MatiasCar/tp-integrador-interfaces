@@ -1,13 +1,12 @@
 package org.example
 
 import io.javalin.Javalin
-import io.javalin.apibuilder.ApiBuilder
 import io.javalin.apibuilder.ApiBuilder.*
 
 import io.javalin.core.security.Role
 import io.javalin.core.util.RouteOverviewPlugin
 import org.example.controllers.UserController
-import org.example.model.Medium
+import org.ui.bootstrap.getMediumSystem
 
 enum class Roles : Role {
     ANYONE, USER
@@ -15,11 +14,14 @@ enum class Roles : Role {
 
 fun main(args: Array<String>) {
 
-    val medium = Medium()
+    val medium = getMediumSystem()
     val jwtToken = MediumTokenJWT()
     val jwtAccessManager = MediumAccessManager(jwtToken, medium)
-    val userController = UserController(medium.system, jwtToken)
-    medium.register("jorge", "jorge@gmail.com","1234","foto.jpg")
+
+
+    val userController = UserController(jwtToken)
+
+
 
     val app = Javalin.create{
         it.defaultContentType = "applicatoin/json"
@@ -43,6 +45,9 @@ fun main(args: Array<String>) {
         }
         path("user"){
             get(userController::getUser, mutableSetOf<Role>(Roles.USER))
+            path("notes"){
+                get(userController::getNotes, mutableSetOf<Role>(Roles.USER))
+            }
         }
         path("content"){
 
