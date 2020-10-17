@@ -1,10 +1,12 @@
 package org.example.controllers
 
 import io.javalin.http.Context
+import org.example.MediumTokenJWT
+import org.ui.DraftComment
 import org.ui.MediumSystem
 import org.ui.NotFound
 
-class ContentController(val mediumSystem: MediumSystem){
+class ContentController(val mediumToken: MediumTokenJWT,val mediumSystem: MediumSystem){
 
     fun getContent(ctx : Context){
         val content = mediumSystem.latestAddedNotes().map {
@@ -31,6 +33,28 @@ class ContentController(val mediumSystem: MediumSystem){
         }
         catch (e : NotFound){
            ctx.status(404)
+            ctx.json(mapOf(
+                    "result" to "error",
+                    "message" to e.message
+            ))
+        }
+    }
+
+
+    fun addCommentToNoteById(ctx : Context){
+        val token = ctx.header("Authorization")
+        val userId = mediumToken.validate(token!!)
+        val id = ctx.pathParam(":contentId")
+        val comment = ctx.body<DraftComment>()
+        try {
+            mediumSystem.addComment(id, userId, comment)
+            ctx.status(200)
+            ctx.json(mapOf(
+                    "result" to "ok"
+            ))
+        }
+        catch (e : NotFound){
+            ctx.status(404)
             ctx.json(mapOf(
                     "result" to "error",
                     "message" to e.message

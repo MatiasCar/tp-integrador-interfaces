@@ -18,7 +18,7 @@ fun main(args: Array<String>) {
     val medium = getMediumSystem()
     val jwtToken = MediumTokenJWT()
     val jwtAccessManager = MediumAccessManager(jwtToken, medium)
-    val contentController = ContentController(medium)
+    val contentController = ContentController(jwtToken,medium)
     val userController = UserController(jwtToken, medium)
 
 
@@ -53,6 +53,7 @@ fun main(args: Array<String>) {
             get(contentController::getContent, mutableSetOf<Role>(Roles.USER))
             path(":contentId"){
                 get(contentController::getNoteById, mutableSetOf<Role>(Roles.USER))
+                post(contentController::addCommentToNoteById, mutableSetOf<Role>(Roles.USER))
             }
         }
         path("search"){
