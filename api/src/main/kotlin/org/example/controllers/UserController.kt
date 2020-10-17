@@ -80,7 +80,7 @@ class UserController (val mediumToken : MediumTokenJWT, val mediumSystem : Mediu
         val note = mediumSystem.notes.filter { it.author == mediumSystem.getAuthor(id) }
         ctx.status(201)
         ctx.json(
-               note.map { NoteInfo(it.title, it.body, it.categories.toString(), it.author.name) }
+               note.map { NoteInfo(it.id,it.title, it.body, it.categories.toString(), it.author.name, it.comments) }
         )
     }
 }

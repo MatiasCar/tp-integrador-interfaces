@@ -50,7 +50,10 @@ fun main(args: Array<String>) {
             }
         }
         path("content"){
-            get(contentController::getContent, mutableSetOf<Role>(Roles.ANYONE))
+            get(contentController::getContent, mutableSetOf<Role>(Roles.USER))
+            path(":contentId"){
+                get(contentController::getNoteById, mutableSetOf<Role>(Roles.USER))
+            }
         }
         path("search"){
 
