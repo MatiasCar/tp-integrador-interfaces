@@ -5,6 +5,7 @@ import io.javalin.apibuilder.ApiBuilder.*
 
 import io.javalin.core.security.Role
 import io.javalin.core.util.RouteOverviewPlugin
+import org.example.controllers.ContentController
 import org.example.controllers.UserController
 import org.ui.bootstrap.getMediumSystem
 
@@ -17,9 +18,8 @@ fun main(args: Array<String>) {
     val medium = getMediumSystem()
     val jwtToken = MediumTokenJWT()
     val jwtAccessManager = MediumAccessManager(jwtToken, medium)
-
-
-    val userController = UserController(jwtToken)
+    val contentController = ContentController(medium)
+    val userController = UserController(jwtToken, medium)
 
 
 
@@ -50,7 +50,7 @@ fun main(args: Array<String>) {
             }
         }
         path("content"){
-
+            get(contentController::getContent, mutableSetOf<Role>(Roles.ANYONE))
         }
         path("search"){
 

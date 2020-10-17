@@ -8,9 +8,9 @@ import org.ui.Note
 import org.ui.UsedEmail
 import org.ui.bootstrap.getMediumSystem
 
-class UserController (val mediumToken : MediumTokenJWT) {
+class UserController (val mediumToken : MediumTokenJWT, val mediumSystem : MediumSystem) {
 
-    val mediumSystem : MediumSystem = getMediumSystem()
+
 
     fun createUser(ctx : Context){
         try {
