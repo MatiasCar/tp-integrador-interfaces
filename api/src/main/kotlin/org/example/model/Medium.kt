@@ -2,6 +2,7 @@ package org.example.model
 
 import org.ui.Author
 import org.ui.IdGenerator
+import org.ui.UsedEmail
 import org.ui.bootstrap.getMediumSystem
 
 
@@ -15,7 +16,7 @@ class Medium {
 
     fun register( name: String, email : String, password : String, photo : String) : Author{
         if(existeAuthor(name)){
-            //levantar exception
+            throw UsedEmail()
         }
         val author = Author(IdGenerator().nextAuthorId(), name, email, password, photo)
         system.authors.add(author)

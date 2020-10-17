@@ -4,8 +4,8 @@ import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
 import javalinjwt.JWTGenerator
 import javalinjwt.JWTProvider
-import org.example.exceptions.TokenNotFoundException
 import org.ui.Author
+import org.ui.NotFound
 
 
 class userGenerator : JWTGenerator<Author> {
@@ -32,7 +32,7 @@ class MediumTokenJWT {
     fun validate(token : String) : String {
         val validatedToken =provider.validateToken(token)
         if(!validatedToken.isPresent){
-            throw TokenNotFoundException()
+            throw NotFound("Token not found")
         }
         return validatedToken.get().getClaim("id").asString()
     }

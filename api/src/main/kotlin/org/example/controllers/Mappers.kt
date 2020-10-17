@@ -8,3 +8,5 @@ data class UserRegisterMapper( val name : String? = null,
 
 
 data class UserLoginMapper(val email: String?, val password: String?)
+
+data class UserInfoMapper(val name: String?, val email: String?, val photo: String?)

@@ -1,8 +1,9 @@
 package org.example
 
 import io.javalin.Javalin
-import io.javalin.apibuilder.ApiBuilder.path
-import io.javalin.apibuilder.ApiBuilder.post
+import io.javalin.apibuilder.ApiBuilder
+import io.javalin.apibuilder.ApiBuilder.*
+
 import io.javalin.core.security.Role
 import io.javalin.core.util.RouteOverviewPlugin
 import org.example.controllers.UserController
@@ -41,7 +42,7 @@ fun main(args: Array<String>) {
             post(userController::login, mutableSetOf<Role>(Roles.ANYONE))
         }
         path("user"){
-
+            get(userController::getUser, mutableSetOf<Role>(Roles.USER))
         }
         path("content"){
 

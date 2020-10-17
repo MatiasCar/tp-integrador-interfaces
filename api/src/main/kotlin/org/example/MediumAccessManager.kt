@@ -5,10 +5,10 @@ import io.javalin.core.security.Role
 import io.javalin.http.Context
 import io.javalin.http.Handler
 import io.javalin.http.UnauthorizedResponse
-import org.example.exceptions.TokenNotFoundException
-import org.example.exceptions.UserNotFoundException
+
 import org.example.model.Medium
 import org.ui.Author
+import org.ui.NotFound
 
 class MediumAccessManager(val tokenJWT: MediumTokenJWT, val medium: Medium): AccessManager{
     override fun manage(handler: Handler, ctx : Context, roles : MutableSet<Role>) {
@@ -29,11 +29,11 @@ class MediumAccessManager(val tokenJWT: MediumTokenJWT, val medium: Medium): Acc
             val userId = tokenJWT.validate(token)
             return medium.system.getAuthor(userId)
         }
-        catch (e : TokenNotFoundException){
-            throw UnauthorizedResponse("Token no encontrado")
+        catch (e : NotFound){
+            throw UnauthorizedResponse("Token not found")
         }
-        catch (e : UserNotFoundException){
-            throw UnauthorizedResponse("Token invalido")
+        catch (e : NotFound){
+            throw UnauthorizedResponse("Invalid token")
         }
     }
 

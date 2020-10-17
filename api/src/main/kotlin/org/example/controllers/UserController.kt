@@ -3,8 +3,8 @@ package org.example.controllers
 import org.example.MediumTokenJWT
 import org.ui.MediumSystem
 import io.javalin.http.Context
-import org.example.exceptions.UserNameExistException
-import org.example.exceptions.UserNotFoundException
+import org.ui.NotFound
+import org.ui.UsedEmail
 
 class UserController (val system : MediumSystem , val mediumToken : MediumTokenJWT) {
 
@@ -22,7 +22,7 @@ class UserController (val system : MediumSystem , val mediumToken : MediumTokenJ
             ctx.status(201)
             ctx.json(mapOf("result" to "ok"))
         }
-        catch (e : UserNameExistException){
+        catch (e : UsedEmail){
             ctx.status(400)
             ctx.json(
                 mapOf(
@@ -48,8 +48,8 @@ class UserController (val system : MediumSystem , val mediumToken : MediumTokenJ
                     mapOf("result" to "ok")
             )
         }
-        catch (e : UserNotFoundException){
-            ctx.status(400)
+        catch (e : NotFound){
+            ctx.status(404)
             ctx.json(
                     mapOf(
                             "result" to "error",
@@ -57,6 +57,17 @@ class UserController (val system : MediumSystem , val mediumToken : MediumTokenJ
                     )
             )
         }
+    }
+
+
+    fun getUser(ctx : Context){
+        val token = ctx.header("Authorization")
+        val id = mediumToken.validate(token!!)
+        val usuario = system.getAuthor(id)
+        ctx.status(201)
+        ctx.json(
+            UserInfoMapper(usuario.name, usuario.email, usuario.photo)
+        )
     }
 
 }
