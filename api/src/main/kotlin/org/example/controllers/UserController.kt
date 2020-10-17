@@ -83,4 +83,5 @@ class UserController (val mediumToken : MediumTokenJWT, val mediumSystem : Mediu
                note.map { NoteInfo(it.id,it.title, it.body, it.categories.toString(), it.author.name, it.comments) }
         )
     }
+
 }

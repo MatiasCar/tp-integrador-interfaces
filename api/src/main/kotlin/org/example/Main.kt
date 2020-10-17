@@ -57,7 +57,7 @@ fun main(args: Array<String>) {
             }
         }
         path("search"){
-
+            get(contentController::searchNoteByTitle, mutableSetOf<Role>(Roles.USER))
         }
         path("category"){
 

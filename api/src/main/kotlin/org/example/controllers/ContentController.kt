@@ -1,5 +1,6 @@
 package org.example.controllers
 
+import io.javalin.http.BadRequestResponse
 import io.javalin.http.Context
 import org.example.MediumTokenJWT
 import org.ui.DraftComment
@@ -60,5 +61,22 @@ class ContentController(val mediumToken: MediumTokenJWT,val mediumSystem: Medium
                     "message" to e.message
             ))
         }
+    }
+
+
+
+    fun searchNoteByTitle(ctx : Context){
+        val text = ctx.queryParam("text") ?: throw BadRequestResponse("Invalid query - param text is null")
+        val search = mediumSystem.searchNotesByTitle(text)
+                .map { NoteInfo(it.id,
+                        it.title,
+                        it.body,
+                        it.categories.toString(),
+                        it.author.name,
+                        it.comments) }
+        ctx.status(200)
+        ctx.json(mapOf(
+                "content" to search
+        ))
     }
 }
