@@ -79,4 +79,19 @@ class ContentController(val mediumToken: MediumTokenJWT,val mediumSystem: Medium
                 "content" to search
         ))
     }
+
+
+    fun searchNoteByCategory(ctx : Context){
+        val category = ctx.pathParam("name")
+        val search = mediumSystem.searchNotesByCategory(category).map { NoteInfo(it.id,
+                        it.title,
+                        it.body,
+                        it.categories.toString(),
+                        it.author.name,
+                        it.comments) }
+        ctx.status(200)
+        ctx.json(mapOf(
+                "categories" to search
+        ))
+    }
 }
