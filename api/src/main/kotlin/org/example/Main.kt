@@ -52,7 +52,7 @@ fun main(args: Array<String>) {
         path("content"){
             get(contentController::getContent, mutableSetOf<Role>(Roles.ANYONE))
             path(":contentId"){
-                get(contentController::getNoteById, mutableSetOf<Role>(Roles.USER))
+                get(contentController::getNoteById, mutableSetOf<Role>(Roles.ANYONE))
                 post(contentController::addCommentToNoteById, mutableSetOf<Role>(Roles.USER))
             }
         }
