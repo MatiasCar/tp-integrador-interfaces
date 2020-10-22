@@ -39,14 +39,18 @@ function Login(){
     }
 
     return(
+        <div className="container">
         <form>
             <input className="input" type="text" placeholder="Username" name="name" value={email} onChange={updateEmail} required />
             <input className="input" type="password" placeholder="Password " name="pass" value={password} onChange={updatePass} required />
-            <button className="btn" type="button" onClick={singIn}>Iniciar sesion</button>
-            <span className="register">
-                <Link  to="/home">Registrar</Link>
-            </span>
+            <button className="btn btn-primary" type="button" onClick={singIn}>Iniciar sesion</button>
+            Aun no tienes cuenta? <span className="register">
+                <Link  to="/register">Registrar</Link>
+            </span> -
+            <span><Link  to="/home">Volver</Link></span>
         </form>
+        
+        </div>
     )
 }
 

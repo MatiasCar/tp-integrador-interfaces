@@ -21,10 +21,10 @@ function Note(){
         axios.get("http://localhost:7000/content/"+id)
         .then(succes =>{
             setNota(succes.data)
-            //setNota(success.data)
+            console.log(succes.data)
         })
         .catch(error => console.log(error))
-    });
+    },[]);
 
     return(
         <div>
