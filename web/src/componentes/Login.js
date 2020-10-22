@@ -16,7 +16,7 @@ function Login(){
     function home(){
         history.push("/home")
     }
-
+    
     function getUser(){
         axios.get("http://localhost:7000/user")
         .then(success => {console.log(success);
@@ -28,8 +28,8 @@ function Login(){
     function singIn(){
         axios.post("http://localhost:7000/login", {email : email, password : password})
         .then(success =>{
-            localStorage.setItem("tokenValido", success.headers.medium_authorization);
-            axios.defaults.headers["medium_authorization"] = localStorage.getItem("tokenValido");
+            localStorage.setItem("tokenValido", success.headers.authorization);
+            axios.defaults.headers["authorization"] = localStorage.getItem("tokenValido");
             getUser();
             home();
         })

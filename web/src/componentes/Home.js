@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
-import Note from './Nota'
 import '../estilos/Nota.css'
+import NotaResumen from './NotaResumen';
 
 function Home(){
 
@@ -13,7 +13,7 @@ function Home(){
             const obtenerDatos = async() =>{
                 await axios.get("http://localhost:7000/content")
             .then(response => {
-                console.log("respuesta",response.data.content)
+                
                 setUltimasNotas(response.data.content)
                 
             })
@@ -35,7 +35,7 @@ function Home(){
             <div className="container">
                 
                 {ultimasNotas.map( note =>(
-                   <Note key={note.id} note={note} />
+                   <NotaResumen key={note.id} note={note} />
                 )
                     
                 )}
