@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom';
-
+import Nav from './NavBar'
 
 function Note(){
 
@@ -28,6 +28,7 @@ function Note(){
 
     return(
         <div>
+            <Nav/>
             <center>Nota especifica</center>
             <p> Titulo : {nota.title}</p>
             <p> Author : {nota.author}</p>

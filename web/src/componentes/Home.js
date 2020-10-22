@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import '../estilos/Nota.css'
 import NotaResumen from './NotaResumen';
+import Nav from './NavBar'
 
 function Home(){
 
@@ -30,7 +31,8 @@ function Home(){
 
     return(
         
-       <div>
+       <div className="body">
+           <Nav/>
            <center><h1>Ultimos agregados :</h1></center>
             <div className="container">
                 

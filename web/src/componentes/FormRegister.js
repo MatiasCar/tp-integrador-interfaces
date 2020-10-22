@@ -57,7 +57,7 @@ function FormRegister(){
 
             <button className="btn btn-secondary" type="button" onClick={evento => registrar(evento)}>Registrar</button>
             <span className="registro">
-                <Link to="/login">Volver</Link>
+                <Link to="/home">Volver</Link>
             </span>
             </form>
         </div>
