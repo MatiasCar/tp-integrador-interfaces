@@ -11,7 +11,7 @@ class ContentController(val mediumToken: MediumTokenJWT,val mediumSystem: Medium
 
     fun getContent(ctx : Context){
         val content = mediumSystem.latestAddedNotes().map {
-            NoteInfo(it.id,it.title, it.body, it.categories.toString(), it.author.name, it.comments) }
+            NoteInfo(it.id,it.title, it.body, it.categories, it.author.name, it.comments) }
         ctx.status(200)
         ctx.json(mapOf(
                 "content" to content
@@ -27,7 +27,7 @@ class ContentController(val mediumToken: MediumTokenJWT,val mediumSystem: Medium
                     NoteInfo(content.id,
                             content.title,
                             content.body,
-                            content.categories.toString(),
+                            content.categories,
                             content.author.name,
                             content.comments)
             )
@@ -71,7 +71,7 @@ class ContentController(val mediumToken: MediumTokenJWT,val mediumSystem: Medium
                 .map { NoteInfo(it.id,
                         it.title,
                         it.body,
-                        it.categories.toString(),
+                        it.categories,
                         it.author.name,
                         it.comments) }
         ctx.status(200)
@@ -86,7 +86,7 @@ class ContentController(val mediumToken: MediumTokenJWT,val mediumSystem: Medium
         val search = mediumSystem.searchNotesByCategory(category).map { NoteInfo(it.id,
                         it.title,
                         it.body,
-                        it.categories.toString(),
+                        it.categories,
                         it.author.name,
                         it.comments) }
         ctx.status(200)
