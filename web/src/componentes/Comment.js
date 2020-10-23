@@ -1,4 +1,5 @@
 import React from 'react'
+import '../estilos/Notas.css'
 
 function Comment({comentario}){
 
@@ -6,10 +7,10 @@ function Comment({comentario}){
 
     return(
         
-        <div className="container">
+        <div className="comentario">
 
-            <p>Autor: {author} </p>
-            <p>Mensaje: {body} </p>
+            <p>Autor: {author.name} </p>
+            <p>Message: {body} </p>
         </div>
         
         );

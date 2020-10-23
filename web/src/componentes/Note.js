@@ -8,7 +8,7 @@ function Note(){
 
     let { id } = useParams();
     
-
+    
     const [nota, setNota] = useState({
         title : "",
         author : "",
@@ -22,7 +22,8 @@ function Note(){
         axios.get("http://localhost:7000/content/"+id)
         .then(succes =>{
             setNota(succes.data)
-            console.log(succes.data)
+           
+            
         })
         .catch(error => console.log(error))
     },[]);
@@ -36,11 +37,16 @@ function Note(){
             <p className="titulo"> Titulo : {nota.title}</p>
             <p className="titulo"> Author : {nota.author}</p>
             <p className="carac">{nota.body}</p>
-            <p className="titulo"> Categories : {nota.categories}</p>
-           
+            <p className="titulo"> Categories : {nota.categories.toString()}</p>
+            {nota.comments.map(comentario=>(
+
+                <Comment key={comentario.id} comentario={comentario}/>
+                )
+                )}
             </div>
             </div>
     )
 }
 
 export default Note;
+
