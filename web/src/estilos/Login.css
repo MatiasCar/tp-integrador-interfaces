@@ -1,0 +1,27 @@
+.body-login{
+    background-image: url("https://i.pinimg.com/originals/86/b3/9d/86b39d2a6047a7c433405a5188f7f46d.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 50rem;
+    align-items: center;
+}
+
+.tituloReg{
+    padding: 6rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 20rem);
+    grid-gap: 6rem;
+    justify-content: center;
+   
+}
+
+.texto-campos{
+    color: rgb(136, 225, 252)
+}
+
+.boton{
+    margin: 10px;
+    
+}
