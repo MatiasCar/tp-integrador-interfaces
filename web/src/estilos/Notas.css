@@ -1,0 +1,59 @@
+.container {
+    padding: 5rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 20rem);
+    grid-gap: 6rem;
+    justify-content: center;
+  }
+
+  .note {
+    background-color: whitesmoke;
+    padding: 1rem;
+    height: 20rem;
+    transition: all .3s;
+    box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    
+  }
+
+  .textoNota {
+    line-height: 2.5rem;
+    font-size: 1.4rem;
+    text-align: center;
+    overflow-wrap: break-word;
+    
+  }
+
+  .body{
+    background-color: #a2fcff;
+  }
+
+  .note-page{
+    background-color: rgb(243, 228, 199);
+    padding: 1rem;
+    height:150%;
+    transition: all .3s;
+    box-shadow: 2px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    
+  }
+
+  .body-note{
+    background-color: rgb(84, 128, 81);
+    height: 60rem;
+  }
+
+  .titulo{
+    line-height: 2.5rem;
+    font-size: 1.4rem;
+    text-align: center;
+    overflow-wrap: break-word;
+    padding: 0.5rem;
+    margin: 1.5rem;
+  }
+
+  .carac{
+    line-height: 2.5rem;
+    font-size: 1.4rem;
+    
+    text-align: left;
+    overflow-wrap: break-word;
+  }

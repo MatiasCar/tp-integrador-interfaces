@@ -27,14 +27,17 @@ function Note(){
     },[]);
 
     return(
-        <div>
+        <div className="body-note">
+
+        <div className="note-page">
             <Nav/>
-            <center>Nota especifica</center>
-            <p> Titulo : {nota.title}</p>
-            <p> Author : {nota.author}</p>
-            <p> Description : {nota.body}</p>
-            <p> Categories : {nota.categories}</p>
+           
+            <p className="titulo"> Titulo : {nota.title}</p>
+            <p className="titulo"> Author : {nota.author}</p>
+            <p className="carac">{nota.body}</p>
+            <p className="titulo"> Categories : {nota.categories}</p>
             
+            </div>
             </div>
     )
 }

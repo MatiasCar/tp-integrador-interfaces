@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
-import '../estilos/Nota.css'
+import '../estilos/Notas.css'
 import NotaResumen from './NotaResumen';
 import Nav from './NavBar'
 
