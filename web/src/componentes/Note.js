@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom';
 import Nav from './NavBar'
+import Comment from './Comment'
 
 function Note(){
 
@@ -36,7 +37,7 @@ function Note(){
             <p className="titulo"> Author : {nota.author}</p>
             <p className="carac">{nota.body}</p>
             <p className="titulo"> Categories : {nota.categories}</p>
-            
+           
             </div>
             </div>
     )

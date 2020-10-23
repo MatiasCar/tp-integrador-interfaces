@@ -8,8 +8,12 @@ function NotaResumen({note}){
         <div className="note">
         <p className="textoNota">Title: {title}</p>    
         <p className="textoNota">Author: {author}</p>
-        <p className="textoNota">Categories: {categories}</p>
+        <p className="textoNota">Categorias:
+        {categories.map(categoria =>(
+          <Link to={"/category/"+categoria} className="btn btn-link" key={categoria}>{categoria}</Link>
+        ))}</p>
         <Link to={"/content/"+id} className="btn btn-info">Ver nota</Link>
+        
       </div>
     );
 }

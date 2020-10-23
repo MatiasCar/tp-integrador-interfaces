@@ -7,7 +7,7 @@ function NavBar(){
     const updateBusqueda = evento => setBusqueda(evento.target.value)
 
     const verificarBusqueda = () =>{
-        if(busqueda==""){
+        if(busqueda===""){
             setBusqueda(" ")
         }
     }
