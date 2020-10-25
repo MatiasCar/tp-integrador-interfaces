@@ -4,13 +4,18 @@ import '../estilos/Notas.css'
 function Comment({comentario}){
 
     const {author, body} = comentario;
+    const photo = comentario.author.photo
 
     return(
         
         <div className="comentario">
-
-            <p>Autor: {author.name} </p>
-            <p>Message: {body} </p>
+            <img 
+                src= {photo}
+                alt= {"foto de perfil de "+author.name}
+                />
+                
+            <p>{author.name} </p>
+            <p>{body} </p>
         </div>
         
         );

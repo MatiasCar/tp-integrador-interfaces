@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom';
 import Nav from './NavBar'
 import Comment from './Comment'
+import '../estilos/Notas.css'
 
 function Note(){
 
@@ -30,19 +31,21 @@ function Note(){
 
     return(
         <div className="body-note">
-
+          {console.log(nota.comments)}
         <div className="note-page">
             <Nav/>
-           
-            <p className="titulo"> Titulo : {nota.title}</p>
-            <p className="titulo"> Author : {nota.author}</p>
+            <center><h2>{nota.title}</h2></center>
+            <p className="titulo"> Autor : {nota.author}</p>
             <p className="carac">{nota.body}</p>
-            <p className="titulo"> Categories : {nota.categories.toString()}</p>
-            {nota.comments.map(comentario=>(
+            <p className="titulo"> Categorias : {nota.categories.toString()}</p>
+            <div className="fondo-comentarios">
+            <h3>Comentarios</h3>
+                {nota.comments.map(comentario=>(
 
-                <Comment key={comentario.id} comentario={comentario}/>
-                )
-                )}
+                    <Comment key={comentario.id} comentario={comentario}/>
+                    )
+                    )}
+            </div>
             </div>
             </div>
     )

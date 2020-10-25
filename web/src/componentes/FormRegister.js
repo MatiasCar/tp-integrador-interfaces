@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Link, useHistory } from 'react-router-dom';
+import {useHistory } from 'react-router-dom';
 import axios from "axios";
 import '../estilos/Login.css'
 
@@ -46,7 +46,7 @@ function FormRegister(){
         
         <div className="tituloReg">
                 <font className="texto-campos">
-                <center><h1>Register</h1></center>
+                <center><h1>Registro</h1></center>
                 </font>
            </div>
         
@@ -56,25 +56,25 @@ function FormRegister(){
             
             <form>
             <div className="form-group row align-items-center">
-                <label className="texto-campos">Name:</label>
-                <div className="col-sm-10">
-                    <input className="input" type="text" placeholder="Enter name" name="name" value={name} onChange={updateName} required /> </div>
+                <label className="texto-campos">Nombre:</label>
+                <div className="col-md-12">
+                    <input className="input" type="text" placeholder="Ingrese nombre" name="name" value={name} onChange={updateName} required /> </div>
             </div>
             <div className="form-group row">
                 <label className="texto-campos">Email:</label>
-                <div className="col-sm-10">
-                    <input className="input" type="text" placeholder="Enter email" name="email" value={email} onChange={updateEmail} required />
+                <div className="col-md-12">
+                    <input className="input" type="text" placeholder="Ingrese email" name="email" value={email} onChange={updateEmail} required />
                 </div>
             </div>
             <div className="form-group row">
-                <label className="texto-campos">Pass:</label>
-                <div className="col-sm-10">
-                <input className="input" type="password" placeholder="Password " name="pass" value={password} onChange={updatePass} required /> </div>
+                <label className="texto-campos">Contraseña:</label>
+                <div className="col-md-12">
+                <input className="input" type="password" placeholder="Contraseña " name="pass" value={password} onChange={updatePass} required /> </div>
             </div>
             <div className="form-group row">
-                <label className="texto-campos">Photo:</label>
-                <div className="col-sm-10">
-                <input className="input" type="text" placeholder="Photo link" name="photo" value={photo} onChange={updatePhoto} required /> </div>
+                <label className="texto-campos">Foto:</label>
+                <div className="col-md-12">
+                <input className="input" type="text" placeholder="Foto" name="photo" value={photo} onChange={updatePhoto} required /> </div>
             </div>    
             
 

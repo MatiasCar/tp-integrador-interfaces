@@ -9,7 +9,7 @@
 }
 
 .tituloReg{
-    padding: 6rem 0;
+    padding: 3rem 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, 20rem);
     grid-gap: 6rem;

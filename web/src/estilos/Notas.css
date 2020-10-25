@@ -50,15 +50,24 @@
   .carac{
     line-height: 2.5rem;
     font-size: 1.4rem;
-    
-    
+    background-color: rgb(224, 160, 99);
     text-align: center;
     overflow-wrap: break-word;
+    border-radius: 1rem;
   }
 
   .comentario{
-    background-color: rgb(111, 171, 221);
+    background-color: rgb(198, 219, 236);
     padding: 20px;
     margin: 25px;
-    border-radius: 20px;
+    
+  }
+
+  .body-search{
+    background-color: rgb(241, 252, 182);
+  }
+
+  .fondo-comentarios{
+    background-color: rgb(145, 143, 143);
+    padding: 1rem;
   }

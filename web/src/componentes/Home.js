@@ -34,7 +34,7 @@ function Home(){
         
        <div className="body">
            <Nav/>
-           <center><h1>Ultimos agregados :</h1></center>
+           <center><h1>Ultimas notas agregadas</h1></center>
             <div className="container">
                 
                 {ultimasNotas.map( note =>(

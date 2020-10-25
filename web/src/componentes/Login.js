@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link, useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 import '../estilos/Login.css'
 
@@ -17,20 +17,14 @@ function Login(){
         history.push("/home")
     }
     
-    function getUser(){
-        axios.get("http://localhost:7000/user")
-        .then(success => {console.log(success);
-            localStorage.setItem("user", success.data.name);})
-        .catch(error => console.log(error))
-    }
+    
 
 
     function singIn(){
         axios.post("http://localhost:7000/login", {email : email, password : password})
         .then(success =>{
-            localStorage.setItem("tokenValido", success.headers.authorization);
-            axios.defaults.headers["authorization"] = localStorage.getItem("tokenValido");
-            getUser();
+            localStorage.setItem("token", success.headers.authorization);
+            axios.defaults.headers["authorization"] = localStorage.getItem("token");
             home();
         })
         .catch(error =>{
@@ -53,9 +47,9 @@ function Login(){
            </div>
             <div className="container">
             <form className="row align-items-center">
-                 <h5 className="col-md-12 texto-campos">Ingrese usuario y contraseña</h5>
-                <input className="input col-md-12" type="text" placeholder="Username" name="name" value={email} onChange={updateEmail} required />
-                <input className="input col-md-12" type="password" placeholder="Password " name="pass" value={password} onChange={updatePass} required />
+                 <h5 className="col-md-12 texto-campos">Ingrese email y contraseña</h5>
+                <input className="input col-md-12" type="text" placeholder="Email" name="name" value={email} onChange={updateEmail} required />
+                <input className="input col-md-12" type="password" placeholder="Contraseña " name="pass" value={password} onChange={updatePass} required />
                 <button className="btn btn-primary col-md-12" type="button" onClick={singIn}>Iniciar sesion</button>
                
                 <div className="texto-campos col-md-12">Aun no tienes cuenta?</div>

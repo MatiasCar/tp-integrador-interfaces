@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios'
 import Nav from './NavBar'
 import NotaResumen from './NotaResumen'
-
+import '../estilos/Notas.css'
 
 function SearchPageCategories(){
 
@@ -23,7 +23,7 @@ function SearchPageCategories(){
 
 
     return(
-        <div>
+        <div className="body-search">
             <Nav/>
             <center><h1>Resultados encontrados para "{name}" : {+ resBusqueda.length}</h1></center>
             <div className="container">
